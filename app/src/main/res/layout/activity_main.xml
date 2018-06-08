@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/event_text"
-        android:text="eventText" />
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="eventText"/>
+
+    <Button
         android:id="@+id/nested"
-        android:text="scrollerView 嵌套 非占满recyclerView" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="scrollerView 嵌套 非占满recyclerView"/>
+
+    <Button
+    android:id="@+id/click_touch_longclick"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Click_Touch_LongClick"/>
+
+    <Button
+        android:id="@+id/bt_view_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View#Post()何时执行通，过View.post()获取View的宽高引发的两个问题：1post的Runnable何时被执行，2为何View需要layout两次；以及发现Android的一个小bug"/>
 </LinearLayout>
 
 

@@ -1,7 +1,7 @@
 package com.wenld.eventsummary;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.CheckBox;
@@ -14,14 +14,19 @@ import com.wenld.eventsummary.event.Util;
  * <p/>
  * Author: wenld on 2017/7/26 14:56.
  * blog: http://www.jianshu.com/u/99f514ea81b3
+ * 本案例的博客  https://www.jianshu.com/p/e00b5668ee39
+ * 7.0  https://www.jianshu.com/p/78d39dc82a88
  * github: https://github.com/LidongWen
  */
 
-public class EventTestActivity extends AppCompatActivity {
+public class EventTestActivity extends Activity {
 
-    private CheckBox checkBox;
+    /**
+     * checkBox 1、3是拦截，其他都是消费
+     */
+    private CheckBox checkBox;  //拦截
     private CheckBox checkBox2;
-    private CheckBox checkBox3;
+    private CheckBox checkBox3;  //拦截
     private CheckBox checkBox4;
     private CheckBox checkBox5;
     private CheckBox checkBox7;
@@ -38,6 +43,7 @@ public class EventTestActivity extends AppCompatActivity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+
         Log.i("test", "【老板】下达任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
         return super.dispatchTouchEvent(ev);
     }
@@ -91,6 +97,8 @@ public class EventTestActivity extends AppCompatActivity {
                     break;
                 case R.id.checkBox7:
                     Util.老板消费 = isChecked;
+                    break;
+                default:
                     break;
             }
         }

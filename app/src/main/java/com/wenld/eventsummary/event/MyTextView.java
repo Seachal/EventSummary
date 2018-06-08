@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 /**
- * <p/>
+ * <p/>  员工
  * Author: wenld on 2017/7/26 14:54.
  * blog: http://www.jianshu.com/u/99f514ea81b3
  * github: https://github.com/LidongWen
@@ -30,6 +30,10 @@ public class MyTextView extends AppCompatTextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        /**
+         * relust true为消费处理，false为不消费
+         */
         boolean relust = Util.员工消费;
         Log.i("test", "【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust));
         return relust;

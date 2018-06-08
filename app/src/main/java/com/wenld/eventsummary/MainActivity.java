@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button event_text;
     private Button nested;
+    private Button click_touch_longclick;
+    private Button view_post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,19 +23,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         event_text = (Button) findViewById(R.id.event_text);
         nested = (Button) findViewById(R.id.nested);
+        click_touch_longclick = (Button) findViewById(R.id.click_touch_longclick);
+        view_post = (Button)findViewById(R.id.bt_view_post);
 
         event_text.setOnClickListener(this);
         nested.setOnClickListener(this);
+        click_touch_longclick.setOnClickListener(this);
+        view_post.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.event_text:
-                startActivity(new Intent(this,EventTestActivity.class));
+                startActivity(new Intent(this, EventTestActivity.class));
                 break;
             case R.id.nested:
-                startActivity(new Intent(this,ScrollerViewNestedRecyclerViewActivity.class));
+                startActivity(new Intent(this, ScrollerViewNestedRecyclerViewActivity.class));
+                break;
+            case R.id.click_touch_longclick:
+                startActivity(new Intent( this,TouchClickTestActivity.class));
+            case R.id.bt_view_post:
+                startActivity(new Intent(this,View0PostTestActivity.class));
+                break;
+            default:
                 break;
         }
     }

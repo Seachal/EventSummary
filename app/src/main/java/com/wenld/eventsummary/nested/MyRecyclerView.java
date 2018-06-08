@@ -30,44 +30,71 @@ public class MyRecyclerView extends RecyclerView {
     float x = 0;
     float y = 0;
 
+
+    /**
+     * 拦截
+     * @param ev
+     * @return
+     */
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+
         boolean bol = super.onInterceptTouchEvent(ev);
         final int action = ev.getAction();
+        //  & 前后都会判断
         switch (action & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN: {
                 final ViewParent parent = getParent();
                 if (parent != null) {
+                    //诉父View，也就是ViewParent不要拦截该控件上的触摸事件
                     parent.requestDisallowInterceptTouchEvent(true);
                 }
                 x = ev.getX();
                 y = ev.getY();
                 break;
             }
+            default:
+                break;
         }
         return bol;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+
         final int action = ev.getAction();
         switch (action & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_MOVE: {
                 final boolean scrollup;
+                //这句代码字面意思我能读懂，但是，为什么呢？
                 if (ev.getY() - y > 0) {
+                    //向下方向滚动，
                     scrollup = false;
                 } else {
+                    //向上方向滚动
                     scrollup = true;
                 }
-                if (!canScrollVertically(scrollup ? 1 : -1)) {
+                /**
+                 *canScrollVertically，判断是否可以在竖直方向上下滚动，-1 向上滚动，1向下滚动。
+                 */
+                if (!canScrollVertically(scrollup ? 1 : -1)) {//scrollup为false 父类拦截， 子类不可以滚动了
+                    /**
+                     * 参数为1，当不能继续向下滚动时，canScrollVertically返回false。
+                     * 参数为-1，当不能继续下上滚动时，canScrollVertically返回false。
+                     */
                     final ViewParent parent = getParent();
                     if (parent != null) {
+                        //告诉父类可以拦截了。
                         parent.requestDisallowInterceptTouchEvent(false);
                     }
                 }
                 y = ev.getY();
             }
+            default:
+                break;
         }
+        //  调用父类的先后，有什么区别。
         return super.onTouchEvent(ev);
     }
 }

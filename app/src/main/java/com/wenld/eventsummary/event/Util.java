@@ -7,8 +7,8 @@ import android.view.MotionEvent;
  * Author: wenld on 2017/7/26 14:53.
  * blog: http://www.jianshu.com/u/99f514ea81b3
  * github: https://github.com/LidongWen
- *
- *  代码 来自   http://www.cnblogs.com/net168/p/4165970.html
+ * <p>
+ * 代码 来自   http://www.cnblogs.com/net168/p/4165970.html
  */
 
 public class Util {
@@ -24,6 +24,8 @@ public class Util {
             case MotionEvent.ACTION_UP:
                 result = "ACTION_UP";
                 break;
+            default:
+                break;
         }
         return result;
     }
@@ -38,6 +40,7 @@ public class Util {
         return result;
     }
 
+
     public static String canDoTaskTop(boolean can) {
         String result = null;
         if (can) {
@@ -48,12 +51,12 @@ public class Util {
         return result;
     }
 
-    public static boolean 经理拦截=false;
-    public static boolean 经理消费=false;
-    public static boolean 组长拦截=false;
-    public static boolean 组长消费=false;
+    public static boolean 经理拦截 = false;
+    public static boolean 经理消费 = false;
+    public static boolean 组长拦截 = false;
+    public static boolean 组长消费 = false;
 
-    public static boolean 员工消费=false;
+    public static boolean 员工消费 = false;
 
-    public static boolean 老板消费=false;
+    public static boolean 老板消费 = false;
 }
