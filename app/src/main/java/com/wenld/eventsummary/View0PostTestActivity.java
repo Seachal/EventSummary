@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 /**
  * *
- * *
+ * *  测试View的post功能
  * Project_Name:EventSummary
  *
  * @author zhangxc
