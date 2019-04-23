@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.wenld.eventsummary.event.Util;
 
 /**
- * <p/>
+ * <p/> 老板
  * Author: wenld on 2017/7/26 14:56.
  * blog: http://www.jianshu.com/u/99f514ea81b3
  * 本案例的博客  https://www.jianshu.com/p/e00b5668ee39
