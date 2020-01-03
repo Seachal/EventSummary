@@ -29,4 +29,5 @@ dependencies {
     compile deps.constraintLayout
     implementation 'com.github.LidongWen:MultiTypeAdapter:0.1.5'
     testCompile 'junit:junit:4.12'
+    compile 'com.github.inaka:galgo:v1.0.2'
 }

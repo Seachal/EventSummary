@@ -94,7 +94,7 @@ public class MyRecyclerView extends RecyclerView {
             default:
                 break;
         }
-        //  调用父类的先后，有什么区别。
+        //  调用父类的先后，有什么区别？
         return super.onTouchEvent(ev);
     }
 }

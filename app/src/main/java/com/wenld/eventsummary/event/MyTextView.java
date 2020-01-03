@@ -25,6 +25,7 @@ public class MyTextView extends AppCompatTextView {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Log.e("test", "【员工】下达任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
+
         return super.dispatchTouchEvent(event);
     }
 
