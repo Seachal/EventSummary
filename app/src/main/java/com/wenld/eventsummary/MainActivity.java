@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.click_touch_longclick:
                 startActivity(new Intent( this,TouchClickTestActivity.class));
+                break;
             case R.id.bt_view_post:
                 startActivity(new Intent(this,View0PostTestActivity.class));
                 break;

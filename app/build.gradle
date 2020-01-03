@@ -25,9 +25,15 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile deps.appcompatV7
-    compile deps.constraintLayout
+    implementation deps.appcompatV7
+    implementation deps.constraintLayout
     implementation 'com.github.LidongWen:MultiTypeAdapter:0.1.5'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.inaka:galgo:v1.0.2'
+//    这个日志输出到屏幕不好用， 需要替换所有之前的 log写法，侵入性太强了。
+//    implementation 'com.github.inaka:galgo:v1.0.2'
+    implementation 'com.github.pedrovgs:lynx:1.1.0'
+
+
+
+
 }
