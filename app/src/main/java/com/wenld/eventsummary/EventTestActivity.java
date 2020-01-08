@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -47,7 +48,7 @@ public class EventTestActivity extends Activity implements IShowLog {
     private MyFrameLayout mMyFrameLayout;
     private MyLinearLayout mMyLinearLayout;
     private MyTextView mMyTextView;
-
+    private MyTextView mMyTextView1;
 
     int mInt = 0;
 
@@ -104,6 +105,15 @@ public class EventTestActivity extends Activity implements IShowLog {
         mMyLinearLayout.setIShowLog(this);
         mMyTextView = findViewById(R.id.tv_my);
         mMyTextView.setIShowLog(this);
+        mMyTextView1 = findViewById(R.id.tv_my1);
+        mMyTextView1.setIShowLog(this);
+        mMyTextView1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+//                return false;
+            }
+        });
 
 
     }

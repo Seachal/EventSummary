@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="140dp">
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -116,25 +116,39 @@
     <com.wenld.eventsummary.event.MyFrameLayout
         android:id="@+id/fl_my"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:background="#40ccb7"
         android:orientation="vertical">
 
         <com.wenld.eventsummary.event.MyLinearLayout
             android:id="@+id/ll_my"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:layout_gravity="top"
+            android:layout_marginTop="10dp"
             android:background="#e2b64f">
 
             <com.wenld.eventsummary.event.MyTextView
                 android:id="@+id/tv_my"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_margin="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 android:background="#d25d5d"
                 android:gravity="center"
                 android:text="这是MyTextView" />
+
+            <com.wenld.eventsummary.event.MyTextView
+                android:id="@+id/tv_my1"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:background="#d25d5d"
+                android:gravity="center"
+                android:text="这是MyTextView"
+                android:layout_marginLeft="10dp" />
         </com.wenld.eventsummary.event.MyLinearLayout>
     </com.wenld.eventsummary.event.MyFrameLayout>
 
@@ -143,10 +157,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:padding="5dp"
             android:id="@+id/tv_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="14dp"
             tools:text="log" />
