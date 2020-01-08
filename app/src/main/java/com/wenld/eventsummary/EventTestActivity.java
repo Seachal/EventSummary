@@ -8,6 +8,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.wenld.eventsummary.event.IShowLog;
+import com.wenld.eventsummary.event.MyFrameLayout;
+import com.wenld.eventsummary.event.MyLinearLayout;
+import com.wenld.eventsummary.event.MyTextView;
 import com.wenld.eventsummary.event.Util;
 
 import io.reactivex.Observable;
@@ -22,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  * github: https://github.com/LidongWen
  */
 
-public class EventTestActivity extends Activity {
+public class EventTestActivity extends Activity implements IShowLog {
 
 
     public static final String TAG = "event";
@@ -40,6 +44,12 @@ public class EventTestActivity extends Activity {
     private TextView textView3;
     private TextView tvText;
 
+    private MyFrameLayout mMyFrameLayout;
+    private MyLinearLayout mMyLinearLayout;
+    private MyTextView mMyTextView;
+
+
+    int mInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +60,22 @@ public class EventTestActivity extends Activity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-
-        Log.i("test", "【老板】下达任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
+        Log.i("Activity", "【老板】下达任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
+        if (mInt == 0) {
+            mInt = 1;
+            log("#dispatchTouchEvent【老板】下达任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
+        }
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean relust = Util.老板消费;
-        Log.i("test", "【老板】完成任务：" + Util.actionToString(event.getAction()) + "，【经理】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTaskTop(relust));
+        Log.i("Activity", "【老板】完成任务：" + Util.actionToString(event.getAction()) + "，【经理】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTaskTop(relust));
+        if (mInt > 0) {
+            mInt = 1;
+            log("#onTouchEvent【老板】完成任务：" + Util.actionToString(event.getAction()) + "，【经理】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTaskTop(relust));
+        }
         return relust;
     }
 
@@ -80,6 +97,13 @@ public class EventTestActivity extends Activity {
         checkBox5.setOnCheckedChangeListener(checkedChangeListener);
         checkBox7.setOnCheckedChangeListener(checkedChangeListener);
         tvText = findViewById(R.id.tv_text);
+        mMyFrameLayout = findViewById(R.id.fl_my);
+        mMyFrameLayout.setIShowLog(this);
+
+        mMyLinearLayout = findViewById(R.id.ll_my);
+        mMyLinearLayout.setIShowLog(this);
+        mMyTextView = findViewById(R.id.tv_my);
+        mMyTextView.setIShowLog(this);
 
 
     }
@@ -113,8 +137,9 @@ public class EventTestActivity extends Activity {
     };
 
 
-    protected void log(Object s) {
-        Log.i(TAG, String.valueOf(s));
+    @Override
+    public void log(Object s) {
+//        Log.i(TAG, String.valueOf(s));
 //      sca:  把从其他页面接收到的Observable发出的数据，再用just发出去，然后再切换到UI线程处理
         Observable.just(s).observeOn(AndroidSchedulers.mainThread()).subscribe(i -> {
             tvText.setText(tvText.getText() + "\n" + i);

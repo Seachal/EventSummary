@@ -17,6 +17,13 @@ import android.view.MotionEvent;
 public class MyTextView extends AppCompatTextView {
 
 
+    private IShowLog mIShowLog;
+
+    public void setIShowLog(IShowLog IShowLog) {
+        mIShowLog = IShowLog;
+    }
+
+
     public MyTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         // TODO Auto-generated constructor stub
@@ -25,7 +32,9 @@ public class MyTextView extends AppCompatTextView {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Log.e("test", "【员工】下达任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
-
+        if (mIShowLog != null) {
+            mIShowLog.log("# dispatchTouchEvent 【员工】下达任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
+        }
         return super.dispatchTouchEvent(event);
     }
 
@@ -37,6 +46,9 @@ public class MyTextView extends AppCompatTextView {
          */
         boolean relust = Util.员工消费;
         Log.i("test", "【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust));
+        if (mIShowLog != null) {
+            mIShowLog.log("# onTouchEvent【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust) + "\n =====");
+        }
         return relust;
     }
 }

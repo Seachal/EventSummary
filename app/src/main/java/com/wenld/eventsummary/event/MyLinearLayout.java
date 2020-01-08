@@ -16,13 +16,25 @@ import android.widget.LinearLayout;
 
 public class MyLinearLayout extends LinearLayout {
 
+
+    private IShowLog mIShowLog;
+
+    public void setIShowLog(IShowLog IShowLog) {
+        mIShowLog = IShowLog;
+    }
+
+
     public MyLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.e("test", "【组长】下达任务：" + Util.actionToString(ev.getAction())  + "，找个人帮我完成，任务往下分发。");
+        Log.e("test", "【组长】下达任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
+
+        if (mIShowLog != null) {
+            mIShowLog.log("# dispatchTouchEvent 【组长】下达任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
+        }
         return super.dispatchTouchEvent(ev);
     }
 
@@ -31,15 +43,21 @@ public class MyLinearLayout extends LinearLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean relust = Util.组长拦截;// （默认false值）默认状态下组长是不拦截的，会传递到 组员
-        Log.e("test", "【组长】是否拦截任务：" + Util.actionToString(ev.getAction())  + "，拦下来？" + relust);
+        Log.e("test", "【组长】是否拦截任务：" + Util.actionToString(ev.getAction()) + "，拦下来？" + relust);
+        if (mIShowLog != null) {
+            mIShowLog.log("# onInterceptTouchEvent 【组长】是否拦截任务：" + Util.actionToString(ev.getAction()) + "，拦下来？" + relust);
+        }
         return relust;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 //        super.onTouchEvent();
-        boolean relust =Util.组长消费;// 默认false值）默认状态下组长是不消费的，会
+        boolean relust = Util.组长消费;// 默认false值）默认状态下组长是不消费的，会
         Log.e("test", "【组长】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTask(relust));
+        if (mIShowLog != null) {
+            mIShowLog.log("# onTouchEvent 【组长】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTask(relust) +"\n =====");
+        }
         return relust;
     }
 }

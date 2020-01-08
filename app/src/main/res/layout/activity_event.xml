@@ -114,18 +114,21 @@
     </RelativeLayout>
 
     <com.wenld.eventsummary.event.MyFrameLayout
+        android:id="@+id/fl_my"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:background="#40ccb7"
         android:orientation="vertical">
 
         <com.wenld.eventsummary.event.MyLinearLayout
+            android:id="@+id/ll_my"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_gravity="top"
             android:background="#e2b64f">
 
             <com.wenld.eventsummary.event.MyTextView
+                android:id="@+id/tv_my"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_margin="100dp"

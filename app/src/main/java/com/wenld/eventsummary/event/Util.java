@@ -33,8 +33,10 @@ public class Util {
     public static String canDoTask(boolean can) {
         String result = null;
         if (can) {
+//            sca: true 自己消费
             result = "完美解决该任务！";
         } else {
+//            sca: false 交给自己
             result = "这活搞不定，交给老大完成吧。";
         }
         return result;
