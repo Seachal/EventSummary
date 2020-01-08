@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.wenld.eventsummary.event.Util;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
 /**
  * <p/> 老板
  * Author: wenld on 2017/7/26 14:56.
@@ -21,6 +24,8 @@ import com.wenld.eventsummary.event.Util;
 
 public class EventTestActivity extends Activity {
 
+
+    public static final String TAG = "event";
     /**
      * checkBox 1、3是拦截，其他都是消费
      */
@@ -33,6 +38,8 @@ public class EventTestActivity extends Activity {
     private TextView textView;
     private TextView textView2;
     private TextView textView3;
+    private TextView tvText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +79,7 @@ public class EventTestActivity extends Activity {
         checkBox4.setOnCheckedChangeListener(checkedChangeListener);
         checkBox5.setOnCheckedChangeListener(checkedChangeListener);
         checkBox7.setOnCheckedChangeListener(checkedChangeListener);
+        tvText = findViewById(R.id.tv_text);
 
 
     }
@@ -103,4 +111,13 @@ public class EventTestActivity extends Activity {
             }
         }
     };
+
+
+    protected void log(Object s) {
+        Log.i(TAG, String.valueOf(s));
+//      sca:  把从其他页面接收到的Observable发出的数据，再用just发出去，然后再切换到UI线程处理
+        Observable.just(s).observeOn(AndroidSchedulers.mainThread()).subscribe(i -> {
+            tvText.setText(tvText.getText() + "\n" + i);
+        });
+    }
 }

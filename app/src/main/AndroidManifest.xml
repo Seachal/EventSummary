@@ -41,6 +41,8 @@
 
         <activity android:name="com.github.pedrovgs.lynx.LynxActivity"/>
 
+
+        <activity android:name=".ExampleActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />

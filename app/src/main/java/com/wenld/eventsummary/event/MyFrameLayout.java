@@ -23,6 +23,7 @@ public class MyFrameLayout extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+//        在 view里也可以使用 Log。
         Log.e("test", "【经理】下达任务：" + Util.actionToString(ev.getAction())  + "，找个人帮我完成，任务往下分发。");
         return super.dispatchTouchEvent(ev);
     }

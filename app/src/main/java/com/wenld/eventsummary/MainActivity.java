@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button click_touch_longclick;
     private Button view_post;
 
+    private Button mButtonlog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         click_touch_longclick.setOnClickListener(this);
         view_post.setOnClickListener(this);
 
+        mButtonlog = findViewById(R.id.bt_log);
+        mButtonlog.setOnClickListener(this);
+
     }
 
     @Override
@@ -47,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_view_post:
                 startActivity(new Intent(this,View0PostTestActivity.class));
+                break;
+
+            case R.id.bt_log:
+                startActivity(new Intent(this,ExampleActivity.class));
                 break;
             default:
                 break;

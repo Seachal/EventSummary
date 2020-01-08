@@ -18,6 +18,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -30,8 +35,18 @@ dependencies {
     implementation 'com.github.LidongWen:MultiTypeAdapter:0.1.5'
     testCompile 'junit:junit:4.12'
 //    这个日志输出到屏幕不好用， 需要替换所有之前的 log写法，侵入性太强了。
-//    implementation 'com.github.inaka:galgo:v1.0.2'
+    implementation 'com.github.inaka:galgo:v1.0.2'
+//
     implementation 'com.github.pedrovgs:lynx:1.1.0'
+//
+//    implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC7"
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+// (see https://github.com/ReactiveX/RxJava/releases for latest 2.x.x version)
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
+
 
 
 
