@@ -49,6 +49,7 @@ public class EventTestActivity extends Activity implements IShowLog {
     private MyLinearLayout mMyLinearLayout;
     private MyTextView mMyTextView;
     private MyTextView mMyTextView1;
+    private MyTextView mMyTextView2;
 
     int mInt = 0;
 
@@ -115,6 +116,11 @@ public class EventTestActivity extends Activity implements IShowLog {
             }
         });
 
+        mMyTextView2 = findViewById(R.id.tv_my2);
+        mMyTextView2.setIShowLog(this);
+//        mMyTextView2.setEnabled(false);
+        mMyTextView2.setClickable(false);
+        mMyTextView2.setLongClickable(false);
 
     }
 

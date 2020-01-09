@@ -38,6 +38,8 @@ public class MyTextView extends AppCompatTextView {
         return super.dispatchTouchEvent(event);
     }
 
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 

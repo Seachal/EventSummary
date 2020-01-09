@@ -150,6 +150,15 @@
                 android:text="这是MyTextView"
                 android:layout_marginLeft="10dp" />
         </com.wenld.eventsummary.event.MyLinearLayout>
+
+        <com.wenld.eventsummary.event.MyTextView
+            android:id="@+id/tv_my2"
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="150dp"
+            android:background="#d25d5d"
+            android:text="这是MyTextView"
+            />
     </com.wenld.eventsummary.event.MyFrameLayout>
 
     <ScrollView
