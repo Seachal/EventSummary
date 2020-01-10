@@ -16,6 +16,8 @@ import android.view.MotionEvent;
 
 public class MyTextView extends AppCompatTextView {
 
+    public static final String TAGActivity = "TAGActivity";
+
 
     private IShowLog mIShowLog;
 
@@ -31,26 +33,29 @@ public class MyTextView extends AppCompatTextView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.e("test", "【员工】下达任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
+        Log.e(TAGActivity, "# dispatchTouchEvent【员工】分派任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
         if (mIShowLog != null) {
-            mIShowLog.log("# dispatchTouchEvent 【员工】下达任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
+            mIShowLog.log("# dispatchTouchEvent 【员工】分派任务：" + Util.actionToString(event.getAction()) + "，我没手下了，唉~自己干吧");
         }
         return super.dispatchTouchEvent(event);
     }
 
 
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        /**
-         * relust true为消费处理，false为不消费
-         */
-        boolean relust = Util.员工消费;
-        Log.i("test", "【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust));
-        if (mIShowLog != null) {
-            mIShowLog.log("# onTouchEvent【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust) + "\n =====");
-        }
-        return relust;
+//        /**
+//         * relust true为消费处理，false为不消费
+//         */
+//        boolean relust = Util.员工消费;
+//        Log.i(TAGActivity, "# onTouchEvent【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust));
+//        if (mIShowLog != null) {
+//            mIShowLog.log("# onTouchEvent【员工】完成任务：" + Util.actionToString(event.getAction()) + "，【员工】现在只能靠自己了！是否解决：" + Util.canDoTask(relust) + "\n =====");
+//        }
+//        return relust;
+
+//        （是调用父类，不是父 view)
+        Log.i(TAGActivity, "# onTouchEvent【员工】 调用父类同名方法，");
+        return super.onTouchEvent(event);
     }
 }

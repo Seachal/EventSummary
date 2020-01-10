@@ -9,6 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="140dp">
 
+
+
+
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
@@ -17,6 +20,14 @@
             android:layout_alignStart="@+id/checkBox3"
             android:layout_alignLeft="@+id/checkBox3"
             android:text="拦截" />
+
+        <CheckBox
+            android:id="@+id/checkBox_dispatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/checkBox3"
+            android:layout_toRightOf="@id/checkBox"
+            android:text="消费，dispatch" />
 
         <CheckBox
             android:id="@+id/checkBox2"
@@ -111,6 +122,50 @@
             android:layout_alignLeft="@+id/checkBox2"
             android:layout_alignParentTop="true"
             android:text="消费" />
+
+
+        <CheckBox
+            android:id="@+id/checkBoxOnTouch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_alignLeft="@+id/textView3"
+            android:shadowColor="#123d6d"
+            android:text="OnTouch"
+            android:textColor="#123d6d" />
+
+
+        <CheckBox
+            android:id="@+id/checkBoxEnable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_toRightOf="@id/checkBoxOnTouch"
+            android:shadowColor="#123d6d"
+            android:text="Enalbe"
+            android:textColor="#123d6d" />
+
+        <CheckBox
+            android:id="@+id/checkBoxClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_toRightOf="@id/checkBoxEnable"
+            android:shadowColor="#123d6d"
+            android:text="Click"
+            android:textColor="#123d6d" />
+
+        <CheckBox
+            android:id="@+id/checkBoxLongClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_toRightOf="@id/checkBoxClick"
+            android:shadowColor="#123d6d"
+            android:text="LongClick"
+            android:textColor="#123d6d" />
+
     </RelativeLayout>
 
     <com.wenld.eventsummary.event.MyFrameLayout
@@ -136,19 +191,19 @@
                 android:layout_weight="1"
                 android:background="#d25d5d"
                 android:gravity="center"
-                android:text="这是MyTextView" />
+                android:text="MyTextView,正常测试" />
 
-            <com.wenld.eventsummary.event.MyTextView
+            <com.wenld.eventsummary.event.MyTextView1
                 android:id="@+id/tv_my1"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:background="#d25d5d"
+                android:background="#123d6d"
                 android:gravity="center"
-                android:text="这是MyTextView"
-                android:layout_marginLeft="10dp" />
+                android:text="onTouch true消费，则onTouchEvent将不会被执行" />
         </com.wenld.eventsummary.event.MyLinearLayout>
 
         <com.wenld.eventsummary.event.MyTextView
@@ -157,8 +212,7 @@
             android:layout_height="130dp"
             android:layout_marginTop="150dp"
             android:background="#d25d5d"
-            android:text="这是MyTextView"
-            />
+            android:text="这是MyTextView" />
     </com.wenld.eventsummary.event.MyFrameLayout>
 
     <ScrollView

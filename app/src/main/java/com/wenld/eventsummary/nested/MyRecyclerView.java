@@ -42,7 +42,7 @@ public class MyRecyclerView extends RecyclerView {
 
         boolean bol = super.onInterceptTouchEvent(ev);
         final int action = ev.getAction();
-        //  & 前后都会判断
+        // sca： & 前后都会判断
         switch (action & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN: {
                 final ViewParent parent = getParent();

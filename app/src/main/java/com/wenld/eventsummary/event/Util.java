@@ -53,6 +53,8 @@ public class Util {
         return result;
     }
 
+
+    public static boolean 经理分发 = false;
     public static boolean 经理拦截 = false;
     public static boolean 经理消费 = false;
     public static boolean 组长拦截 = false;
@@ -61,4 +63,11 @@ public class Util {
     public static boolean 员工消费 = false;
 
     public static boolean 老板消费 = false;
+
+    //
+    public static boolean onTouch = false;
+    public static boolean enable = false;
+    public static boolean click = false;
+    public static boolean longClick = false;
+
 }

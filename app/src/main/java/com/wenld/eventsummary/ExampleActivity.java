@@ -9,7 +9,7 @@ import com.inaka.galgo.GalgoOptions;
 
 /**
  * *
- * *
+ * *  一个把 log 输出到屏幕的 demo
  * Project_Name:EventSummary
  *
  * @author zhangxc
