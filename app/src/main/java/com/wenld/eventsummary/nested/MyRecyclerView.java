@@ -42,7 +42,7 @@ public class MyRecyclerView extends RecyclerView {
 
         boolean bol = super.onInterceptTouchEvent(ev);
         final int action = ev.getAction();
-        // sca： & 前后都会判断
+        // sca： & 前后都会判断，  ACTION_MASK： http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0226/911.html
         switch (action & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN: {
                 final ViewParent parent = getParent();
@@ -50,6 +50,7 @@ public class MyRecyclerView extends RecyclerView {
                     //诉父View，也就是ViewParent不要拦截该控件上的触摸事件
                     parent.requestDisallowInterceptTouchEvent(true);
                 }
+//              sca: 记录 down事件 定位的位置
                 x = ev.getX();
                 y = ev.getY();
                 break;
@@ -67,7 +68,7 @@ public class MyRecyclerView extends RecyclerView {
         switch (action & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_MOVE: {
                 final boolean scrollup;
-                //这句代码字面意思我能读懂，但是，为什么呢？
+                //这句代码字面意思我能读懂，但是，为什么呢？ "手指向下移动， ev.getY() - y > 0"
                 if (ev.getY() - y > 0) {
                     //向下方向滚动，
                     scrollup = false;
@@ -77,6 +78,9 @@ public class MyRecyclerView extends RecyclerView {
                 }
                 /**
                  *canScrollVertically，判断是否可以在竖直方向上下滚动，-1 向上滚动，1向下滚动。
+                 *
+                 * sca: MyRecyclerView已经滚动到底了，告诉父可以拦截了。父拦截，则事件给父 View的 onTouchEvent 处理。
+                 *
                  */
                 if (!canScrollVertically(scrollup ? 1 : -1)) {//scrollup为false 父类拦截， 子类不可以滚动了
                     /**
@@ -91,10 +95,11 @@ public class MyRecyclerView extends RecyclerView {
                 }
                 y = ev.getY();
             }
+            break;
             default:
                 break;
         }
-        //  调用父类的先后，有什么区别？
+        //  调用父类的先后，有什么区别？ sca:
         return super.onTouchEvent(ev);
     }
 }

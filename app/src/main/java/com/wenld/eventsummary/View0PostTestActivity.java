@@ -2,6 +2,8 @@ package com.wenld.eventsummary;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.TextView;
@@ -35,7 +37,39 @@ public class View0PostTestActivity extends Activity {
                 Log.d("View0PostTest", "3 post Runnable_mTextView width : " + tv_view_post_test.getMeasuredWidth() + " - height : " + tv_view_post_test.getMeasuredHeight());
             }
         });
-        Log.d("View0PostTest", "2 post后_mTextView width:  " + tv_view_post_test.getMeasuredWidth() + " - height : " +  tv_view_post_test.getMeasuredHeight());
+        Log.d("View0PostTest", "2 post后_mTextView width:  " + tv_view_post_test.getMeasuredWidth() + " - height : " + tv_view_post_test.getMeasuredHeight());
 
+
+        MyHandler myHandler = new MyHandler();
+        //        没有任何意义，仅仅用于测试查看源码。
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 从子线程发送消息，在主线程处理消息
+                myHandler.sendMessage(myHandler.obtainMessage());
+
+            }
+        }).start();
+
+
+//
+        myHandler.post(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+    }
+
+
+    private static class MyHandler extends Handler {
+
+        public MyHandler() {
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
     }
 }
