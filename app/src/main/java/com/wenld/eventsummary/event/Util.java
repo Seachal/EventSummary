@@ -64,7 +64,7 @@ public class Util {
 
     public static boolean 老板消费 = false;
 
-    //
+    // Touch 事件
     public static boolean onTouch = false;
     public static boolean enable = false;
     public static boolean click = false;

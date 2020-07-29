@@ -14,22 +14,39 @@
         android:id="@+id/bt_touch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="测试Buttton" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:src="@mipmap/ic_launcher" />
 
+<!--    -->
     <TextView
         android:id="@+id/tv_test"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:enabled="false"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorPrimaryDark"
         android:clickable="false"
+        android:enabled="false"
         android:longClickable="false"
-        />
+        android:text="TextView" />
+
+    <RelativeLayout
+        android:background="#CCC"
+        android:id="@+id/layout"
+        android:onClick="myClick"
+        android:layout_width="200dp"
+        android:layout_height="200dp">
+        <View
+            android:clickable="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+    </RelativeLayout>
 
 </LinearLayout>

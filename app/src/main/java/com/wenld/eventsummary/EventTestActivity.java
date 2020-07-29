@@ -64,7 +64,7 @@ public class EventTestActivity extends Activity implements IShowLog {
 
 
     // 让 Activity 只打印一次 log， 正常情况下，如果 View 不消费事件， 那么一系列的Down Move ... Move UP,都会传到  Actvity。
-//  - 所以 正常情况为了验证 demo，把这个控制去掉。
+    //  - 所以 正常情况为了验证 demo，把这个控制去掉。
     int mInt = 0;
 
     private CheckBox checkBoxOnTouch;
@@ -82,6 +82,7 @@ public class EventTestActivity extends Activity implements IShowLog {
 
     /**
      * sca
+     *
      * @param ev
      * @return
      */
@@ -92,7 +93,7 @@ public class EventTestActivity extends Activity implements IShowLog {
             mInt = 1;
             log("#dispatchTouchEvent【老板】分派任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
         }
-//        log("#dispatchTouchEvent【老板】分派任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
+        //        log("#dispatchTouchEvent【老板】分派任务：" + Util.actionToString(ev.getAction()) + "，找个人帮我完成，任务往下分发。");
 
         return super.dispatchTouchEvent(ev);
     }
@@ -100,6 +101,7 @@ public class EventTestActivity extends Activity implements IShowLog {
 
     /**
      * sc:
+     *
      * @param event
      * @return
      */
@@ -111,7 +113,7 @@ public class EventTestActivity extends Activity implements IShowLog {
             mInt = 1;
             log("#onTouchEvent【老板】完成任务：" + Util.actionToString(event.getAction()) + "，【经理】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTaskTop(relust));
         }
-//        log("#onTouchEvent【老板】完成任务：" + Util.actionToString(event.getAction()) + "，【经理】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTaskTop(relust));
+        //        log("#onTouchEvent【老板】完成任务：" + Util.actionToString(event.getAction()) + "，【经理】太差劲了，以后不再找你干活了，我自来搞定！是否解决：" + Util.canDoTaskTop(relust));
 
         return relust;
     }
@@ -129,12 +131,28 @@ public class EventTestActivity extends Activity implements IShowLog {
         textView2 = (TextView) findViewById(R.id.textView2);
         textView3 = (TextView) findViewById(R.id.textView3);
 
+
+        //  onTouchListener > onTouchEvent > onLongClickListener > onClickListener。
+        checkBoxOnTouch = findViewById(R.id.checkBoxOnTouch);
+        checkBoxEnable = findViewById(R.id.checkBoxEnable);
+        checkBoxClick = findViewById(R.id.checkBoxClick);
+        checkBoxLongClick = findViewById(R.id.checkBoxLongClick);
+
+
         checkBox.setOnCheckedChangeListener(checkedChangeListener);
         checkBox2.setOnCheckedChangeListener(checkedChangeListener);
         checkBox3.setOnCheckedChangeListener(checkedChangeListener);
         checkBox4.setOnCheckedChangeListener(checkedChangeListener);
         checkBox5.setOnCheckedChangeListener(checkedChangeListener);
         checkBox7.setOnCheckedChangeListener(checkedChangeListener);
+
+       // 事件监听
+        checkBoxOnTouch.setOnCheckedChangeListener(checkedChangeListener);
+        checkBoxEnable.setOnCheckedChangeListener(checkedChangeListener);
+        checkBoxClick.setOnCheckedChangeListener(checkedChangeListener);
+        checkBoxLongClick.setOnCheckedChangeListener(checkedChangeListener);
+
+
         tvText = findViewById(R.id.tv_text);
         mMyFrameLayout = findViewById(R.id.fl_my);
         mMyFrameLayout.setIShowLog(this);
@@ -150,15 +168,9 @@ public class EventTestActivity extends Activity implements IShowLog {
 
         mMyTextView2 = findViewById(R.id.tv_my2);
         mMyTextView2.setIShowLog(this);
-//        mMyTextView2.setEnabled(false);
+        //        mMyTextView2.setEnabled(false);
         mMyTextView2.setClickable(false);
         mMyTextView2.setLongClickable(false);
-
-
-        checkBoxOnTouch = findViewById(R.id.checkBoxOnTouch);
-        checkBoxEnable = findViewById(R.id.checkBoxEnable);
-        checkBoxClick = findViewById(R.id.checkBoxClick);
-        checkBoxLongClick = findViewById(R.id.checkBoxLongClick);
 
 
     }
@@ -194,8 +206,8 @@ public class EventTestActivity extends Activity implements IShowLog {
                     mMyTextView1.setOnTouchListener(new View.OnTouchListener() {
                         @Override
                         public boolean onTouch(View v, MotionEvent event) {
-                            //   1、如果setOnTouchListener中的onTouch方法返回值是true（事件被消费）时，则onTouchEvent方法将不会被执行；
-//  2、只有当setOnTouchListener中的onTouch方法返回值是false（事件未被消费，向下传递）时，onTouchEvent方法才被执行。
+                            //  1、如果setOnTouchListener中的onTouch方法返回值是true（事件被消费）时，则onTouchEvent方法将不会被执行；
+                            //  2、只有当setOnTouchListener中的onTouch方法返回值是false（事件未被消费，向下传递）时，onTouchEvent方法才被执行。
 
                             return isChecked;
                         }
@@ -222,8 +234,8 @@ public class EventTestActivity extends Activity implements IShowLog {
 
     @Override
     public void log(Object s) {
-//        Log.i(TAG, String.valueOf(s));
-//      sca:  把从其他页面接收到的Observable发出的数据，再用just发出去，然后再切换到UI线程处理
+        //        Log.i(TAG, String.valueOf(s));
+        //      sca:  把从其他页面接收到的Observable发出的数据，再用just发出去，然后再切换到UI线程处理
         Observable.just(s).observeOn(AndroidSchedulers.mainThread()).subscribe(i -> {
             tvText.setText(tvText.getText() + "\n" + i);
         });

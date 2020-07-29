@@ -27,7 +27,7 @@ task clean(type: Delete) {
 
 project.ext {
     minSdkVersion = 16
-    targetSdkVersion = 26
+    targetSdkVersion = 22
     compileSdkVersion = 27
     buildToolsVersion = '27.0.3'
     supportLibraryVersion = '27.1.1'
