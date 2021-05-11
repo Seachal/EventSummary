@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 /**
@@ -29,24 +30,39 @@ public class TouchClickTestActivity extends Activity {
 
     private Button mButton = null;
 
+    private RelativeLayout layout;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_click_test);
 
+
+
+
         imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setOnTouchListener(mOnTouchListener);
         imageView.setOnLongClickListener(mOnLongClickListener);
         imageView.setOnClickListener(mOnClickListener);
-        imageView.setClickable(true);
+
 
         mButton = (Button) findViewById(R.id.bt_touch);
         mButton.setOnTouchListener(mOnTouchListener);
         mButton.setOnLongClickListener(mOnLongClickListener);
         mButton.setOnClickListener(mOnClickListener);
         mButton.setClickable(true);
+
+
+
+
+
+
     }
 
+    /**
+     *
+     */
     View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View arg0, MotionEvent event) {
@@ -62,6 +78,7 @@ public class TouchClickTestActivity extends Activity {
 //                return false;  //3 FALSE
 //            }
             Log.d(TAG, "onTouch execute, action " + event.getAction());
+            Toast.makeText(TouchClickTestActivity.this, "onTouch", Toast.LENGTH_SHORT).show();
             return false;   // 这个的作用是什么？  返回false,才会执行onTouchEvent，onTouchEvent中调用了Onclick
         }
     };
@@ -90,6 +107,13 @@ public class TouchClickTestActivity extends Activity {
     };
 
 
+    public void myClick(View v) {
+        // does something very interesting
+        Toast.makeText(TouchClickTestActivity.this, "onClick", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "RelativeLayout click");  //5 NULL
+    }
+
+
     /**
      * public boolean onLongClick(View v)
      * 　　参数v：参数v为事件源控件，当长时间按下此控件时才会触发该方法。
@@ -99,5 +123,7 @@ public class TouchClickTestActivity extends Activity {
      * 如果返回true，只执行长按事件
      * 原文链接：https://blog.csdn.net/daoxiaomianzi/article/details/53021766
      */
+
+
 
 }
